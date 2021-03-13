@@ -1,7 +1,6 @@
 package com.example.movieapp.views
 
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -38,7 +37,7 @@ class MovieDetailsActivity : AppCompatActivity() {
       title.text = it.title
       releaseDate.text = it.releaseDate
       overview.text = it.overview
-      
+
       applyImageUrl(it.posterPath.toString(), posterImage)
       favoriteButtonOnClickListener(favoriteButton)
     })
