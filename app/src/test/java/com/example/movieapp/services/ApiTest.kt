@@ -7,7 +7,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-class MovieRemoteDataTest {
+class ApiTest {
     lateinit var mockWebServer: MockWebServer
 
     @Before

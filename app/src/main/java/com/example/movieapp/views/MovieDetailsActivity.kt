@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieapp.R
+import com.example.movieapp.local_database.MovieDatabase
 import com.example.movieapp.viewmodels.MovieDetailsViewModel
 import com.squareup.picasso.Picasso
 

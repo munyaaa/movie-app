@@ -9,4 +9,6 @@ class LocalMovieRepository(context: Context) {
 
     suspend fun getAllMovie() = movieDatabase?.getMovieDao()?.getAll()
     suspend fun addMovie(movie: Movie) = movieDatabase?.getMovieDao()?.insert(movie)
+    suspend fun getMovieById(id: String) = movieDatabase?.getMovieDao()?.getById(id)
+    suspend fun deleteMovie(movie: Movie) = movieDatabase?.getMovieDao()?.delete(movie)
 }
