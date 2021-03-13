@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieapp.R
+import com.example.movieapp.local_database.Movie
+import com.example.movieapp.local_database.MovieDatabase
 import com.example.movieapp.viewmodels.MovieDetailsViewModel
 import com.squareup.picasso.Picasso
 
@@ -19,7 +21,6 @@ class MovieDetailsActivity : AppCompatActivity() {
     setContentView(R.layout.activity_movie_details)
 
     val id = intent.extras?.get("movieId")
-
     val title: TextView = findViewById(R.id.movie_title)
     val releaseDate: TextView = findViewById(R.id.movie_release_date)
     val favoriteButton: ToggleButton = findViewById(R.id.favoriteButton)
@@ -40,13 +41,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         .fit()
         .into(posterImage)
 
-      favoriteButton.setOnCheckedChangeListener { _, isChecked ->
-        if (isChecked) {
-          Toast.makeText(this, "Checked", Toast.LENGTH_SHORT).show()
-        } else {
-          Toast.makeText(this, "Not Checked", Toast.LENGTH_SHORT).show()
-        }
-      }
+      favoriteButtonOnClickListener(favoriteButton)
     })
+  }
+
+  fun favoriteButtonOnClickListener(favoriteButton: ToggleButton) {
+    favoriteButton.setOnCheckedChangeListener { _, isChecked ->
+      if (isChecked) {
+        Toast.makeText(this, "Unfav", Toast.LENGTH_SHORT).show()
+      } else {
+        Toast.makeText(this, "Fav", Toast.LENGTH_SHORT).show()
+      }
+    }
   }
 }
