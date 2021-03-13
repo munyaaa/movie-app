@@ -1,6 +1,7 @@
 package com.example.movieapp.views
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieapp.R
+import com.example.movieapp.local_database.Movie
 import com.example.movieapp.local_database.MovieDatabase
 import com.example.movieapp.viewmodels.MovieDetailsViewModel
 import com.squareup.picasso.Picasso
@@ -21,6 +23,23 @@ class MovieDetailsActivity : AppCompatActivity() {
     setContentView(R.layout.activity_movie_details)
 
     setToolbar()
+
+//    try {
+//      val movieDatabase: MovieDatabase = MovieDatabase.getInstance(this)!!
+//      movieDatabase.getMovieDao()?.insert(
+//        Movie(
+//          id = "id",
+//          releaseDate = "re",
+//          overview = "ove",
+//          title = "ti"
+//        )
+//      )
+//      val all = movieDatabase.getMovieDao()?.getAll()
+//      Log.d("Result", all.toString())
+//    } catch (e: Exception) {
+//      Log.d("Error", e.message.toString())
+//    }
+
 
     val toolbarDetailsTitle: TextView = findViewById(R.id.toolbar_details_title)
     val id = intent.extras?.get("movieId")
