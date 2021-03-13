@@ -33,7 +33,6 @@ class NowPlayingMoviesFragment: Fragment() {
 
       val movieAdapter = NowPlayingMovieAdapter(it.results!!)
       recyclerView.adapter = movieAdapter
-      Log.d("Movie", it.results?.get(0)?.title.toString())
     })
 
     return v

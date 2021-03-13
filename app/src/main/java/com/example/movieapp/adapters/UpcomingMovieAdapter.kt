@@ -6,11 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.views.MovieDetailsActivity
+import com.squareup.picasso.Picasso
 
 class UpcomingMovieAdapter(private val movies: List<com.example.movieapp.models.upcoming_movies.Result>) :
   RecyclerView.Adapter<UpcomingMovieAdapter.MovieViewHolder>() {
@@ -20,6 +22,7 @@ class UpcomingMovieAdapter(private val movies: List<com.example.movieapp.models.
     val title: TextView = view.findViewById(R.id.movie_title)
     val releaseDate: TextView = view.findViewById(R.id.movie_release_date)
     val overview: TextView = view.findViewById(R.id.overview)
+    val posterImage: ImageView = view.findViewById(R.id.movie_image)
     val context: Context = view.context
   }
 
@@ -33,6 +36,12 @@ class UpcomingMovieAdapter(private val movies: List<com.example.movieapp.models.
     viewHolder.title.text = movies[position].title
     viewHolder.releaseDate.text = movies[position].releaseDate
     viewHolder.overview.text = movies[position].overview
+
+    Picasso.get()
+      .load("https://image.tmdb.org/t/p/w500/${movies[position].backdropPath}")
+      .error(R.drawable.ic_launcher_foreground)
+      .fit()
+      .into(viewHolder.posterImage)
 
     viewHolder.container.setOnClickListener {
       val intent = Intent(viewHolder.context, MovieDetailsActivity::class.java)

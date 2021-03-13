@@ -11,7 +11,7 @@
         android:layout_margin="6dp">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:src="@drawable/ic_launcher_background"
             android:id="@+id/movie_image"/>
 

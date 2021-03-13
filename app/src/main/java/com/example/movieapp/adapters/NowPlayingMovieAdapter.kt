@@ -7,11 +7,13 @@ import com.example.movieapp.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.models.now_playing_movies.Result
 import com.example.movieapp.views.MovieDetailsActivity
+import com.squareup.picasso.Picasso
 
 class NowPlayingMovieAdapter(private val movies: List<Result>) :
   RecyclerView.Adapter<NowPlayingMovieAdapter.MovieViewHolder>() {
@@ -21,6 +23,7 @@ class NowPlayingMovieAdapter(private val movies: List<Result>) :
     val title: TextView = view.findViewById(R.id.movie_title)
     val releaseDate: TextView = view.findViewById(R.id.movie_release_date)
     val overview: TextView = view.findViewById(R.id.overview)
+    val posterImage: ImageView = view.findViewById(R.id.movie_image)
     val context: Context = view.context
   }
 
@@ -35,6 +38,12 @@ class NowPlayingMovieAdapter(private val movies: List<Result>) :
     viewHolder.title.text = movies[position].title
     viewHolder.releaseDate.text = movies[position].releaseDate
     viewHolder.overview.text = movies[position].overview
+
+    Picasso.get()
+      .load("https://image.tmdb.org/t/p/w500/${movies[position].backdropPath}")
+      .error(R.drawable.ic_launcher_foreground)
+      .fit()
+      .into(viewHolder.posterImage)
 
     viewHolder.container.setOnClickListener {
       val intent = Intent(viewHolder.context, MovieDetailsActivity::class.java)

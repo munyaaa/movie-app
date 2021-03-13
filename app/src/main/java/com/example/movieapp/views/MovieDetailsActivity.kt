@@ -2,6 +2,7 @@ package com.example.movieapp.views
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieapp.R
 import com.example.movieapp.viewmodels.MovieDetailsViewModel
+import com.squareup.picasso.Picasso
 
 class MovieDetailsActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     val title: TextView = findViewById(R.id.movie_title)
     val releaseDate: TextView = findViewById(R.id.movie_release_date)
     val favoriteButton: ToggleButton = findViewById(R.id.favoriteButton)
+    val posterImage: ImageView = findViewById(R.id.movie_image)
     val overview: TextView = findViewById(R.id.overview)
 
     val movieDetailsViewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
@@ -30,6 +33,12 @@ class MovieDetailsActivity : AppCompatActivity() {
       title.text = it.title
       releaseDate.text = it.releaseDate
       overview.text = it.overview
+
+      Picasso.get()
+        .load("https://image.tmdb.org/t/p/w500/${it.backdropPath}")
+        .error(R.drawable.ic_launcher_foreground)
+        .fit()
+        .into(posterImage)
 
       favoriteButton.setOnCheckedChangeListener { _, isChecked ->
         if (isChecked) {
