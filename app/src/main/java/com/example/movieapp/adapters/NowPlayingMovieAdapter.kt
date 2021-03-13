@@ -16,33 +16,25 @@ import com.example.movieapp.views.MovieDetailsActivity
 class NowPlayingMovieAdapter(private val movies: List<Result>) :
   RecyclerView.Adapter<NowPlayingMovieAdapter.MovieViewHolder>() {
 
-  /**
-   * Provide a reference to the type of views that you are using
-   * (custom ViewHolder).
-   */
   class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val container: CardView = view.findViewById(R.id.movieCard)
     val title: TextView = view.findViewById(R.id.movie_title)
     val releaseDate: TextView = view.findViewById(R.id.movie_release_date)
+    val overview: TextView = view.findViewById(R.id.overview)
     val context: Context = view.context
   }
 
-  // Create new views (invoked by the layout manager)
   override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MovieViewHolder {
-    // Create a new view, which defines the UI of the list item
     val view = LayoutInflater.from(viewGroup.context)
       .inflate(R.layout.movie_card, viewGroup, false)
 
     return MovieViewHolder(view)
   }
 
-  // Replace the contents of a view (invoked by the layout manager)
   override fun onBindViewHolder(viewHolder: MovieViewHolder, position: Int) {
-
-    // Get element from your dataset at this position and replace the
-    // contents of the view with that element
     viewHolder.title.text = movies[position].title
     viewHolder.releaseDate.text = movies[position].releaseDate
+    viewHolder.overview.text = movies[position].overview
 
     viewHolder.container.setOnClickListener {
       val intent = Intent(viewHolder.context, MovieDetailsActivity::class.java)
@@ -51,7 +43,6 @@ class NowPlayingMovieAdapter(private val movies: List<Result>) :
     }
   }
 
-  // Return the size of your dataset (invoked by the layout manager)
   override fun getItemCount() = movies.size
 
 }
