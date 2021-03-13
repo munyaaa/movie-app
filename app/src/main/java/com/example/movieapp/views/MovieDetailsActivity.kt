@@ -36,7 +36,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
       Picasso.get()
         .load("https://image.tmdb.org/t/p/w500/${it.backdropPath}")
-        .error(R.drawable.ic_launcher_foreground)
+        .error(R.drawable.ic_baseline_broken_image_24)
         .fit()
         .into(posterImage)
 
