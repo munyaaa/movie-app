@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/movieCard">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="12dp"
+        android:layout_margin="6dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher_background"
+            android:id="@+id/movie_image"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:layout_toEndOf="@id/movie_image"
+            android:layout_marginLeft="10dp"
+            android:text="Title"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_release_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="8pt"
+            android:layout_toEndOf="@id/movie_image"
+            android:layout_below="@id/movie_title"
+            android:layout_marginLeft="10dp"
+            android:text="Release Date"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="8pt"
+            android:layout_toEndOf="@id/movie_image"
+            android:layout_below="@id/movie_release_date"
+            android:layout_marginLeft="10dp"
+            android:text="Lorem ipsum dolor"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
