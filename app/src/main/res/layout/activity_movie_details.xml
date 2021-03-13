@@ -6,8 +6,8 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:id="@+id/toolbar_details"
+        layout="@layout/toolbar_details" />
 
     <include
         android:id="@+id/movie_details_card"

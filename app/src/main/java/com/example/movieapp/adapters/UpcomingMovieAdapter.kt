@@ -38,7 +38,7 @@ class UpcomingMovieAdapter(private val movies: List<com.example.movieapp.models.
     viewHolder.overview.text = movies[position].overview
 
     Picasso.get()
-      .load("https://image.tmdb.org/t/p/w500/${movies[position].backdropPath}")
+      .load("https://image.tmdb.org/t/p/w500/${movies[position].posterPath}")
       .error(R.drawable.ic_baseline_broken_image_24)
       .fit()
       .into(viewHolder.posterImage)

@@ -7,30 +7,28 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Movie::class], version = 1, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {
+  abstract fun getMovieDao(): MovieDatabaseDao?
 
-  abstract val movieDatabaseDao: MovieDatabaseDao
+  fun cleanUp() {
+    movieDb = null
+  }
 
   companion object {
-
-    @Volatile
-    private var INSTANCE: MovieDatabase? = null
-
-    fun getInstance(context: Context): MovieDatabase {
-      synchronized(this) {
-        var instance = INSTANCE
-
-        if (instance == null) {
-          instance = Room.databaseBuilder(
-            context.applicationContext,
-            MovieDatabase::class.java,
-            "movie_database"
-          )
-            .fallbackToDestructiveMigration()
-            .build()
-          INSTANCE = instance
-        }
-        return instance
+    private var movieDb: MovieDatabase? = null
+    fun getInstance(context: Context): MovieDatabase? {
+      if (movieDb == null) {
+        movieDb = buildDatabaseInstance(context)
       }
+      return movieDb
+    }
+
+    private fun buildDatabaseInstance(context: Context): MovieDatabase {
+      return Room.databaseBuilder(
+        context,
+        MovieDatabase::class.java,
+        "favorite_movie_database"
+      )
+        .allowMainThreadQueries().build()
     }
   }
 }
